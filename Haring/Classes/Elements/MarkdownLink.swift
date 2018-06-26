@@ -9,7 +9,9 @@
 import UIKit
 
 open class MarkdownLink: MarkdownLinkElement {
-  
+  public var parsedRange: NSRange?
+  public var parserDelegate: MarkdownParser?
+
   fileprivate static let regex = "\\[[^\\[]*?\\]\\([^\\)]*\\)"
   
   open var font: UIFont?
@@ -61,6 +63,8 @@ open class MarkdownLink: MarkdownLinkElement {
                               length: linkStartInResult - match.range.location - 2)
     formatText(attributedString, range: formatRange, link: linkURLString)
     addAttributes(attributedString, range: formatRange, link: linkURLString)
+    parserDelegate?.parsedSections.append(self)
+    parsedRange = formatRange
   }
   
   open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange,

@@ -9,6 +9,11 @@
 import UIKit
 
 open class MarkdownEscaping: MarkdownElement {
+    public var parsedRange: NSRange?
+    
+    public var parserDelegate: MarkdownParser?
+    
+    
 
   fileprivate static let regex = "\\\\."
 

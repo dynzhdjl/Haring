@@ -9,6 +9,10 @@
 import UIKit
 
 open class MarkdownCodeEscaping: MarkdownElement {
+    public var parsedRange: NSRange?
+    
+    public var parserDelegate: MarkdownParser?
+    
 
 fileprivate static let regex = "(\\s+|^)(?<!\\\\)(?:\\\\\\\\)*+(\\`+)(.+?)(\\2)"
 

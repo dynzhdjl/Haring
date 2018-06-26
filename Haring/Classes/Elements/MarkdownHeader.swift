@@ -9,6 +9,10 @@
 import UIKit
 
 open class MarkdownHeader: MarkdownLevelElement {
+    public var parsedRange: NSRange?
+    
+    public var parserDelegate: MarkdownParser?
+
 
   fileprivate static let regex = "^(#{1,%@})\\s*(.+)$"
 

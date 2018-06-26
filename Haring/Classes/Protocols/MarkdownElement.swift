@@ -11,6 +11,8 @@ import Foundation
 /// The base protocol for all Markdown Elements, it handles parsing through regex.
 public protocol MarkdownElement: class {
   
+  weak var parserDelegate: MarkdownParser? { get set }
+  var parsedRange: NSRange? { get set }
   var regex: String { get }
   
   func regularExpression() throws -> NSRegularExpression

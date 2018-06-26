@@ -9,7 +9,10 @@
 import UIKit
 
 open class MarkdownQuote: MarkdownLevelElement {
-
+    public var parsedRange: NSRange?
+    
+    
+  public var parserDelegate: MarkdownParser?
   fileprivate static let regex = "^(\\>{1,%@})\\s*(.+)$"
 
   open var maxLevel: Int

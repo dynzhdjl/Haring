@@ -9,6 +9,11 @@
 import UIKit
 
 open class MarkdownBold: MarkdownCommonElement {
+    public var parsedRange: NSRange?
+    
+  
+    public var parserDelegate: MarkdownParser?
+    
   
   fileprivate static let regex = "(\\s+|^|\\B)(\\*\\*|__)(.+?)(\\2)"
   

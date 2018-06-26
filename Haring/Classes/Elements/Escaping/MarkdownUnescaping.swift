@@ -9,7 +9,9 @@
 import UIKit
 
 open class MarkdownUnescaping: MarkdownElement {
-  
+  public var parsedRange: NSRange?
+  public var parserDelegate: MarkdownParser?
+    
   fileprivate static let regex = "\\\\[0-9a-z]{4}"
   
   open var regex: String {

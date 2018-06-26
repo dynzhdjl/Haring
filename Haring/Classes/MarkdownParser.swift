@@ -16,6 +16,7 @@ open class MarkdownParser {
   fileprivate var unescapingElements: [MarkdownElement]
 
   open var customElements: [MarkdownElement]
+  open var parsedSections: [MarkdownElement]
 
   // MARK: Basic Elements
   open let header: MarkdownHeader
@@ -60,6 +61,7 @@ open class MarkdownParser {
     self.defaultElements = [header, list, quote, link, automaticLink, bold, italic]
     self.unescapingElements = [code, unescaping]
     self.customElements = customElements
+    self.parsedSections = []
   }
 
   // MARK: Element Extensibility
@@ -92,6 +94,7 @@ open class MarkdownParser {
     elements.append(contentsOf: customElements)
     elements.append(contentsOf: unescapingElements)
     elements.forEach { element in
+      element.parserDelegate = self
       if automaticLinkDetectionEnabled || type(of: element) != MarkdownAutomaticLink.self {
         element.parse(attributedString)
       }
